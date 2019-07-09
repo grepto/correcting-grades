@@ -18,7 +18,7 @@ def remove_chastisements(schoolkid):
     Сhastisement.objects.filter(schoolkid=schoolkid).delete()
 
 
-def add_commendation(schoolkid, subject_name)
+def add_commendation(schoolkid, subject_name):
     commendations = ['Молодец!',
                      'Отлично!',
                      'Хорошо!',
@@ -53,12 +53,3 @@ def add_commendation(schoolkid, subject_name)
                                    subject__title__contains=subject_name)[0]
     Commendation.objects.create(text=random.choice(commendations), created=datetime.date.today(), schoolkid=schoolkid,
                                 subject=lesson.subject, teacher=lesson.teacher)
-
-
-def main():
-    schoolkid = get_schoolkid('Фролов Иван')
-    print(schoolkid)
-
-
-if __name__ == '__main__':
-    main()
