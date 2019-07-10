@@ -50,9 +50,9 @@ def add_commendation(schoolkid, subject_name, **kwargs):
                      'Ты растешь над собой!',
                      'Ты многое сделал, я это вижу!',
                      'Теперь у тебя точно все получится!', ]
-    commendation_text = kwargs.get('commendation_text', random.choice(commendations))
-    commendation_date = kwargs.get('commendation_date', datetime.date.today())
+    text = kwargs.get('text', random.choice(commendations))
+    date = kwargs.get('date', datetime.date.today())
     lesson = Lesson.objects.filter(year_of_study=schoolkid.year_of_study, group_letter=schoolkid.group_letter,
                                    subject__title__contains=subject_name)[0]
-    Commendation.objects.create(text=commendation_text, created=commendation_date, schoolkid=schoolkid,
+    Commendation.objects.create(text=text, created=date, schoolkid=schoolkid,
                                 subject=lesson.subject, teacher=lesson.teacher)
